@@ -13,7 +13,7 @@ extension ViewController {
    /**
     * Test setting
     */
-   func testSettingValues(){
+   func testSettingValues() {
       let defaults = UserDefaults.standard
       defaults.set(25, forKey: "Age")
       defaults.set(true, forKey: "hasOnboarded")
@@ -23,7 +23,6 @@ extension ViewController {
       //arr and dict:
       let array = ["Hello", "World"]
       defaults.set(array, forKey: "SavedArray")
-      
       let dict = ["Name": "Paul", "Country": "UK"]
       defaults.set(dict, forKey: "SavedDict")
 //
@@ -31,16 +30,15 @@ extension ViewController {
    /**
     *
     */
-   func testReadingValues(){
+   func testReadingValues() {
       UserDefaults.standard.set("John", forKey: "FirstName")
       Swift.print(UserDefaults.standard.object(forKey: "FirstName"))//John
       //where is the userdefaults stored?
-      
    }
    /**
     *
     */
-   func removeDataTest(){
+   func removeDataTest() {
       testSettingValues()
 //      UserDefaults.debug()
       Swift.print("remove all")
