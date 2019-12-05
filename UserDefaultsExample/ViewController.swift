@@ -1,5 +1,4 @@
 import UIKit
-import UserDefaultSugar
 
 class ViewController: UIViewController {
    override func viewDidLoad() {
@@ -9,6 +8,9 @@ class ViewController: UIViewController {
       removeDataTest()
    }
 }
+/**
+ * Test
+ */
 extension ViewController {
    /**
     * Test setting
@@ -32,7 +34,7 @@ extension ViewController {
     */
    func testReadingValues() {
       UserDefaults.standard.set("John", forKey: "FirstName")
-      Swift.print(UserDefaults.standard.object(forKey: "FirstName"))//John
+      Swift.print(UserDefaults.standard.object(forKey: "FirstName") ?? "err")//John
       //where is the userdefaults stored?
    }
    /**
