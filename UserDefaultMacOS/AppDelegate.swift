@@ -15,10 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
    }()
    func applicationDidFinishLaunching(_ aNotification: Notification) {
       _ = view
-     
    }
 }
-open class View: NSView{
+open class View: NSView {
    override open var isFlipped: Bool { return true } // TopLeft orientation
    override public init(frame: CGRect) {
       super.init(frame: frame)
