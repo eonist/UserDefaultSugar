@@ -2,7 +2,7 @@ import Foundation
 
 extension UserDefaults {
    /**
-    * Reads all (key,val) pairs in UserDefaults.standard
+    * Reads all (key, val) pairs in UserDefaults.standard
     */
    public static func debug() {
       UserDefaults.standard.dictionaryRepresentation().forEach { key, value in
