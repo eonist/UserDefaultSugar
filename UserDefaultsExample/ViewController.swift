@@ -3,6 +3,7 @@ import UIKit
 class ViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
+      Swift.print("hello world")
       //      testSettingValues()
 //      testReadingValues()
       removeDataTest()
