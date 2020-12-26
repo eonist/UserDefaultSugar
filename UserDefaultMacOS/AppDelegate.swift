@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
    }
 }
 open class View: NSView {
-   override open var isFlipped: Bool { return true } // TopLeft orientation
+   override open var isFlipped: Bool { true } // TopLeft orientation
    override public init(frame: CGRect) {
       super.init(frame: frame)
       Swift.print("hello world")
