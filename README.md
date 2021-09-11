@@ -4,7 +4,6 @@
 ![Lang](https://img.shields.io/badge/Language-Swift%205.0-orange.svg)
 [![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift)
 [![SwiftLint Sindre](https://img.shields.io/badge/SwiftLint-Sindre-hotpink.svg)](https://github.com/sindresorhus/swiftlint-sindre)
-[![codebeat badge](https://codebeat.co/badges/f7402326-440b-4760-8db0-0a61457fc642)](https://codebeat.co/projects/github-com-eonist-userdefaultsugar-master)
 
 # UserDefaultSugar
 
