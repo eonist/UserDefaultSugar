@@ -24,7 +24,7 @@ extension UserDefaults {
  */
 extension UserDefaults {
    /**
-    * Set Codable object into UserDefaults
+    * Set Codable object to UserDefaults
     * - Parameters:
     *   - object: Codable Object
     *   - forKey: Key string
@@ -35,7 +35,7 @@ extension UserDefaults {
       set(jsonData, forKey: forKey)
    }
    /**
-    * Get Codable object into UserDefaults
+    * Get Codable object from UserDefaults
     * - Parameters:
     *   - object: Codable Object
     *   - forKey: Key string
