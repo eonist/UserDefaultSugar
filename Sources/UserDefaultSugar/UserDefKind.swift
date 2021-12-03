@@ -29,7 +29,6 @@ extension UserDefKind {
     */
    private static func getData(key: String) -> Self {
       guard let data = (try? UserDefaults.standard.get(objectType: Self.self, forKey: key)) else {
-//         Swift.print("⚠️️ ⚠️️ ⚠️️ unable to find data for key: \(key) use defaultModel")
          return setData(key: key, data: Self.defaultModel)
       }
       return data
@@ -40,10 +39,9 @@ extension UserDefKind {
    @discardableResult
    private static func setData(key: String, data: Self) -> Self {
       do {
-//         Swift.print("set data for key: \(key)")
          try UserDefaults.standard.set(object: data, forKey: key)
       } catch {
-         Swift.print("⚠️️ err setting data for key: \(key) error:  \(error)")
+         Swift.print("⚠️️ Err setting data for key: \(key) error:  \(error)")
       }
       return data // We return data for convenience
    }
