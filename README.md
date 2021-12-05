@@ -22,3 +22,6 @@ UserDefault sugar
 
 ### Resources
 [https://github.com/radex/SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults)
+
+### Todo:
+- Make examples using UserDefKind.
