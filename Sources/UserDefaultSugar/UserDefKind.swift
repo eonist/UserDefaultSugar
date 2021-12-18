@@ -3,8 +3,11 @@ import Foundation
  * Enables you to store structs in user default .plistinfo
  */
 public protocol UserDefKind: Codable {
-   static var key: String { get }
-   static var defaultModel: Self { get } // - Fixme: ⚠️️ maybe make optional
+   static var key: String { get } // key in user def dictionary
+   /**
+    *  - Fixme: ⚠️️ maybe make optional or throwable
+    */
+   static var defaultModel: Self { get }
 }
 /**
  * Ext
@@ -26,6 +29,7 @@ extension UserDefKind {
 extension UserDefKind {
    /**
     * Gets data
+    * - Parameter key: key in user def dictionary
     */
    private static func getData(key: String) -> Self {
       guard let data = (try? UserDefaults.standard.get(objectType: Self.self, forKey: key)) else {
@@ -35,9 +39,11 @@ extension UserDefKind {
    }
    /**
     * Sets data
+    * - Parameters:
+    *   - key: key in user def dictionary
+    *   - data: data to be stored
     */
-   @discardableResult
-   private static func setData(key: String, data: Self) -> Self {
+   @discardableResult private static func setData(key: String, data: Self) -> Self {
       do {
          try UserDefaults.standard.set(object: data, forKey: key)
       } catch {
