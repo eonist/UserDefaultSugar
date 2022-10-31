@@ -3,24 +3,40 @@ import Foundation
  * Enables you to store structs in user default .plistinfo
  */
 public protocol UserDefKind: Codable {
-   static var key: String { get } // key in user def dictionary
    /**
-    *  - Fixme: ⚠️️ maybe make optional or throwable
+    * Key in user def dictionary
+    */
+   static var key: String { get }
+   /**
+    *  - Fixme: ⚠️️ Maybe make optional or throwable
     */
    static var defaultModel: Self { get }
+   /**
+    * Usually .standard but can use: init?(suiteName suitename: String?) as well
+    */
+   static var userDefaults: UserDefaults? { get }
 }
 /**
  * Ext
  */
 extension UserDefKind {
    /**
+    * Default value (Overridable)
+    */
+   public static var userDefaults: UserDefaults? {
+      .standard
+   }
+   /**
     * Returns the model (for the user def key)
     * - Note: Serializes and deserializes (JSON <-> Struct)
     * - Note: To access individual values, you we can use model.dict?["someKey"] as? SomeValue etc
     */
    public static var model: Self {
-      get { getData(key: Self.key)
-      } set { setData(key: Self.key, data: newValue) }
+      get {
+         getData(key: Self.key) // returns model
+      } set {
+         setData(key: Self.key, data: newValue) // sets new model
+      }
    }
 }
 /**
@@ -28,24 +44,26 @@ extension UserDefKind {
  */
 extension UserDefKind {
    /**
-    * Gets data
+    * Gets data for key
     * - Parameter key: key in user def dictionary
     */
    private static func getData(key: String) -> Self {
-      guard let data = (try? UserDefaults.standard.get(objectType: Self.self, forKey: key)) else {
+//      UserDefaults(suiteName: "group.your.bundle.here")
+      guard let data = (try? userDefaults?.get(objectType: Self.self, forKey: key)) else {
          return setData(key: key, data: Self.defaultModel)
       }
       return data
    }
    /**
-    * Sets data
+    * Sets data for key
     * - Parameters:
     *   - key: key in user def dictionary
     *   - data: data to be stored
     */
    @discardableResult private static func setData(key: String, data: Self) -> Self {
       do {
-         try UserDefaults.standard.set(object: data, forKey: key)
+         try userDefaults?.set(object: data, forKey: key)
+         // UserDefaults.standard.synchronize() // - Fixme: ⚠️️ might be needed or?
       } catch {
          Swift.print("⚠️️ Err setting data for key: \(key) error:  \(error)")
       }
