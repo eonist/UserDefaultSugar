@@ -12,7 +12,8 @@ public protocol UserDefKind: Codable {
     */
    static var defaultModel: Self { get }
    /**
-    * Usually .standard but can use: init?(suiteName suitename: String?) as well
+    * - Note: Usually .standard, but can use: .init?(suiteName suitename: String?) as well
+    * - Note: .init(suiteName: Bundle.main.infoDictionary?["AppGroup"] as? String)
     */
    static var userDefaults: UserDefaults? { get }
 }
