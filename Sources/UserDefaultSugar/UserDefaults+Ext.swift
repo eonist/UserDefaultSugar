@@ -11,8 +11,8 @@ extension UserDefaults {
    }
    /**
     * Removes all keys and values from user defaults
-    * - Fixme: ⚠️️ there is also `resetStandardUserDefaults()` resetStandardUserDefaults releases the standardUserDefaults and sets it to nil. A new standardUserDefaults will be created the next time it's accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.
     * - Note: Seems to not remove the apple data. like keyboar etc. Only what the user set
+    * - Fixme: ⚠️️ There is also `resetStandardUserDefaults()` `resetStandardUserDefaults` releases the `standardUserDefaults` and sets it to nil. A new `standardUserDefaults will be created the next time it's accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.
     */
    public static func removeAll() {
       UserDefaults.standard.dictionaryRepresentation().forEach { key, _ in

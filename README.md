@@ -7,14 +7,14 @@
 
 # UserDefaultSugar
 
-### What is it:
+### What is it
 UserDefault sugar
 
-### How do I use it:
-`UserDefaults.debug()`//Prints all data  
-`UserDefaults.removeAll()`//removes all data
+### How do I use it
+`UserDefaults.debug()` // Prints all data  
+`UserDefaults.removeAll()` // Removes all data
 
-### How can I get it:
+### How can I get it
 - SPM: `"github.com/eonist/UserDefaultSugar" branch: "master"`
 
 ### Blog post about using userDefaults
@@ -24,4 +24,5 @@ UserDefault sugar
 [https://github.com/radex/SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults)
 
 ### Todo:
-- Make examples using UserDefKind.
+- Make examples using UserDefKind
+- Make headless xcodeproj?

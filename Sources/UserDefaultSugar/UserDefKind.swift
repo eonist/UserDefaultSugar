@@ -1,19 +1,19 @@
 import Foundation
 /**
- * Enables you to store structs in user default .plistinfo
+ * Enables you to store structs in user default `.plistinfo`
  */
 public protocol UserDefKind: Codable {
    /**
-    * Key in user def dictionary
+    * Key in user-default dictionary
     */
    static var key: String { get }
    /**
-    *  - Fixme: ⚠️️ Maybe make optional or throwable
+    *  - Fixme: ⚠️️ Maybe make optional or throwable?
     */
    static var defaultModel: Self { get }
    /**
-    * - Note: Usually .standard, but can use: .init?(suiteName suitename: String?) as well
-    * - Note: .init(suiteName: Bundle.main.infoDictionary?["AppGroup"] as? String)
+    * - Note: Usually .standard, but can use: `.init?(suiteName suitename: String?)` as well
+    * - Note: `.init(suiteName: Bundle.main.infoDictionary?["AppGroup"] as? String)`
     */
    static var userDefaults: UserDefaults? { get }
 }
@@ -34,9 +34,9 @@ extension UserDefKind {
     */
    public static var model: Self {
       get {
-         getData(key: Self.key) // returns model
+         getData(key: Self.key) // Returns model
       } set {
-         setData(key: Self.key, data: newValue) // sets new model
+         setData(key: Self.key, data: newValue) // Sets new model
       }
    }
 }
@@ -49,7 +49,7 @@ extension UserDefKind {
     * - Parameter key: key in user def dictionary
     */
    private static func getData(key: String) -> Self {
-//      UserDefaults(suiteName: "group.your.bundle.here")
+      // UserDefaults(suiteName: "group.your.bundle.here")
       guard let data = (try? userDefaults?.get(objectType: Self.self, forKey: key)) else {
          return setData(key: key, data: Self.defaultModel)
       }
@@ -59,7 +59,7 @@ extension UserDefKind {
     * Sets data for key
     * - Parameters:
     *   - key: key in user def dictionary
-    *   - data: data to be stored
+    *   - data: Data to be stored
     */
    @discardableResult private static func setData(key: String, data: Self) -> Self {
       do {

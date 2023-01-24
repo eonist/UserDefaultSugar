@@ -31,7 +31,7 @@ extension ViewController {
 //
    }
    /**
-    *
+    * - Fixme: ⚠️️
     */
    func testReadingValues() {
       UserDefaults.standard.set("John", forKey: "FirstName")
@@ -39,11 +39,11 @@ extension ViewController {
       //where is the userdefaults stored?
    }
    /**
-    *
+    * - Fixme: ⚠️️
     */
    func removeDataTest() {
       testSettingValues()
-//      UserDefaults.debug()
+      // UserDefaults.debug()
       Swift.print("remove all")
       UserDefaults.removeAll()
       UserDefaults.debug()

@@ -7,7 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     * Creates the view
     */
    lazy var view: NSView = {
-      let contentRect = window.contentRect(forFrameRect: window.frame) // size of win sans titlebar
+      let contentRect = window.contentRect(forFrameRect: window.frame) // Size of win sans titlebar
       let view: View = .init(frame: contentRect)
       window.contentView = view
       view.layer?.backgroundColor = NSColor.white.cgColor
@@ -21,10 +21,10 @@ open class View: NSView {
    override open var isFlipped: Bool { true } // TopLeft orientation
    override public init(frame: CGRect) {
       super.init(frame: frame)
-      Swift.print("hello world")
-      self.wantsLayer = true // if true then view is layer backe
-      //      testSettingValues()
-      //      testReadingValues()
+      Swift.print("Hello world")
+      self.wantsLayer = true // If true then view is layer backe
+      // testSettingValues()
+      // testReadingValues()
       removeDataTest()
    }
    /**
@@ -56,15 +56,15 @@ extension View {
       defaults.set(dict, forKey: "SavedDict")
    }
    /**
-    *
+    * - Fixme: ⚠️️ 
     */
    func testReadingValues() {
       UserDefaults.standard.set("John", forKey: "FirstName")
-      Swift.print(UserDefaults.standard.object(forKey: "FirstName") ?? "err")//John
+      Swift.print(UserDefaults.standard.object(forKey: "FirstName") ?? "err") // John
       // where is the userdefaults stored? Answer see blog-post
    }
    /**
-    *
+    * - Fixme: ⚠️️
     */
    func removeDataTest() {
       testSettingValues()
