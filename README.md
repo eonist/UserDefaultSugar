@@ -26,3 +26,4 @@ UserDefault sugar
 ### Todo:
 - Make examples using UserDefKind
 - Make headless xcodeproj?
+- Add support for UserDefaults(suiteName: "group.your.bundle.here") etc

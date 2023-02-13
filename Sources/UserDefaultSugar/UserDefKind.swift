@@ -49,7 +49,6 @@ extension UserDefKind {
     * - Parameter key: key in user def dictionary
     */
    private static func getData(key: String) -> Self {
-      // UserDefaults(suiteName: "group.your.bundle.here")
       guard let data = (try? userDefaults?.get(objectType: Self.self, forKey: key)) else {
          return setData(key: key, data: Self.defaultModel)
       }

@@ -2,7 +2,7 @@ import Foundation
 
 extension UserDefaults {
    /**
-    * Reads all (key, val) pairs in UserDefaults.standard
+    * Reads all (key, val) pairs in `UserDefaults.standard` 
     */
    public static func debug() {
       UserDefaults.standard.dictionaryRepresentation().forEach { key, value in
@@ -11,8 +11,8 @@ extension UserDefaults {
    }
    /**
     * Removes all keys and values from user defaults
-    * - Note: Seems to not remove the apple data. like keyboar etc. Only what the user set
-    * - Fixme: ⚠️️ There is also `resetStandardUserDefaults()` `resetStandardUserDefaults` releases the `standardUserDefaults` and sets it to nil. A new `standardUserDefaults will be created the next time it's accessed. The only visible effect this has is that all KVO observers of the previous standardUserDefaults will no longer be observing it.
+    * - Remark: Seems to not remove the apple data. like keyboar etc. Only what the user set
+    * - Note: There is also `resetStandardUserDefaults()` the method releases the `standardUserDefaults` and sets it to nil. A new `standardUserDefaults` will be created the next time it's accessed. The only visible effect this has is that all KVO observers of the previous `standardUserDefaults` will no longer be observing it.
     */
    public static func removeAll() {
       UserDefaults.standard.dictionaryRepresentation().forEach { key, _ in
