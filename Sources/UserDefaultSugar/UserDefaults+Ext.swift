@@ -22,6 +22,7 @@ extension UserDefaults {
 }
 /**
  * UserDefaults extensions
+ * - Fixme: ⚠️️ add example
  */
 extension UserDefaults {
    /**

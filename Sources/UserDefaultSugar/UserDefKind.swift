@@ -12,8 +12,8 @@ public protocol UserDefKind: Codable {
     */
    static var defaultModel: Self { get }
    /**
-    * - Note: Usually .standard, but can use: `.init?(suiteName suitename: String?)` as well
-    * - Note: `.init(suiteName: Bundle.main.infoDictionary?["AppGroup"] as? String)`
+    * - Remark: Usually .standard, but can use: `.init?(suiteName suitename: String?)` as well
+    * - Remark: `.init(suiteName: Bundle.main.infoDictionary?["AppGroup"] as? String)`
     */
    static var userDefaults: UserDefaults? { get }
 }
@@ -29,8 +29,8 @@ extension UserDefKind {
    }
    /**
     * Returns the model (for the user def key)
-    * - Note: Serializes and deserializes (JSON <-> Struct)
-    * - Note: To access individual values, you we can use model.dict?["someKey"] as? SomeValue etc
+    * - Remark: Serializes and deserializes (JSON <-> Struct)
+    * - Remark: To access individual values, you we can use model.dict?["someKey"] as? SomeValue etc
     */
    public static var model: Self {
       get {
@@ -62,6 +62,7 @@ extension UserDefKind {
     */
    @discardableResult private static func setData(key: String, data: Self) -> Self {
       do {
+         // - Fixme: ⚠️️ print error if userdef is optional?
          try userDefaults?.set(object: data, forKey: key)
          // UserDefaults.standard.synchronize() // - Fixme: ⚠️️ might be needed or?
       } catch {
