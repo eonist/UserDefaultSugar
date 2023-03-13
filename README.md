@@ -21,7 +21,8 @@ UserDefault sugar
 [http://eon.codes/blog/2018/09/18/userdefaults/](http://eon.codes/blog/2018/09/18/userdefaults/)
 
 ### Resources
-[https://github.com/radex/SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults)
+- [https://github.com/radex/SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults)
+- Share UserDefault between app and extension See for more details: https://stackoverflow.com/questions/45607903/sharing-userdefaults-between-extensions and https://smashswift.com/how-to-share-user-defaults-with-extensions/
 
 ### Todo:
 - Make examples using UserDefKind
