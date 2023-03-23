@@ -4,6 +4,8 @@
 ![Lang](https://img.shields.io/badge/Language-Swift%205.0-orange.svg)
 [![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift)
 [![Tests](https://github.com/eonist/UserDefaultSugar/actions/workflows/Tests.yml/badge.svg)](https://github.com/eonist/UserDefaultSugar/actions/workflows/Tests.yml)
+[![codebeat badge](https://codebeat.co/badges/53f9ea75-e563-4331-9247-e3ab24b8d23d)](https://codebeat.co/projects/github-com-eonist-userdefaultsugar-master)
+
 # UserDefaultSugar
 
 ### What is it
