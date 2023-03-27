@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "UserDefaultSugar",
-    platforms: [.iOS(.v12), .macOS(.v10_13)],
+    platforms: [.iOS(.v12), .macOS(.v10_13)], // update to sift 5.6 and ios 15?
     products: [
         .library(
             name: "UserDefaultSugar",
