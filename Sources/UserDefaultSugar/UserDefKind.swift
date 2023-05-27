@@ -12,7 +12,7 @@ public protocol UserDefKind: Codable {
     */
    static var defaultModel: Self { get }
    /**
-    * - Remark: Usually .standard, but can use: `.init?(suiteName suitename: String?)` as well
+    * - Remark: Usually `.standard`, but can use: `.init?(suiteName suitename: String?)` as well
     * - Remark: `.init(suiteName: Bundle.main.infoDictionary?["AppGroup"] as? String)`
     */
    static var userDefaults: UserDefaults? { get }
@@ -64,7 +64,7 @@ extension UserDefKind {
       do {
          // - Fixme: ⚠️️ print error if userdef is optional?
          try userDefaults?.set(object: data, forKey: key)
-         // UserDefaults.standard.synchronize() // - Fixme: ⚠️️ might be needed or?
+         // UserDefaults.standard.synchronize() // - Fixme: ⚠️️ might be needed or? Do some research, maybe enable via param flag
       } catch {
          Swift.print("⚠️️ Err setting data for key: \(key) error:  \(error)")
       }
