@@ -49,3 +49,16 @@ extension UserDefaults {
       return try JSONDecoder().decode(objectType, from: result)
    }
 }
+/**
+ * Asserter
+ */
+extension UserDefaults {
+   /**
+    * UserDef extension
+    * ## Examples:
+    * UserDefaults.standard.exists(keyName: hasBeenLaunchedBeforeFlag)
+    */
+   public func exists(keyName: String) -> Bool {
+      self.object(forKey: keyName) != nil // Key exists
+   }
+}
