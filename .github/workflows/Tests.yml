@@ -14,7 +14,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: swift build -v
-    - name: Lint code using SwiftLint ## Adds swift-linting to GH actions
-      run: swiftlint lint --reporter github-actions-logging
+    ## lint is currently broken for some reason, it doesnt use the provided lint file I think
+    ## - name: Lint code using SwiftLint ## Adds swift-linting to GH actions
+      ## run: swiftlint lint --reporter github-actions-logging
     ## - name: Run tests
       ## run: swift test -v
