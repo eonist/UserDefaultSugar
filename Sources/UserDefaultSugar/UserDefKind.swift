@@ -1,6 +1,6 @@
 import Foundation
 /**
- * Enables you to store structs in user default `.plistinfo`
+ * Protocol that enables you to store structs in user default `.plistinfo`
  */
 public protocol UserDefKind: Codable {
    /**
@@ -8,29 +8,33 @@ public protocol UserDefKind: Codable {
     */
    static var key: String { get }
    /**
-    *  - Fixme: ⚠️️ Maybe make optional or throwable?
+    * Default value for the struct 
+    * - Fixme: ⚠️️ Maybe make optional or throwable?
     */
    static var defaultModel: Self { get }
    /**
+    * User defaults object to use
     * - Remark: Usually `.standard`, but can use: `.init?(suiteName suitename: String?)` as well
     * - Remark: `.init(suiteName: Bundle.main.infoDictionary?["AppGroup"] as? String)`
     */
    static var userDefaults: UserDefaults? { get }
 }
+
 /**
- * Ext
+ * Extension for UserDefKind protocol
  */
 extension UserDefKind {
    /**
-    * Default value (Overridable)
+    * Default value for user defaults object
     */
    public static var userDefaults: UserDefaults? {
       .standard
    }
+   
    /**
-    * Returns the model (for the user def key)
+    * Returns the model for the user default key
     * - Remark: Serializes and deserializes (JSON <-> Struct)
-    * - Remark: To access individual values, you we can use model.dict?["someKey"] as? SomeValue etc
+    * - Remark: To access individual values, you can use `model.dict?["someKey"] as? SomeValue` etc
     */
    public static var model: Self {
       get {
@@ -40,13 +44,14 @@ extension UserDefKind {
       }
    }
 }
+
 /**
- * Private helpers
+ * Private helpers for UserDefKind protocol
  */
 extension UserDefKind {
    /**
     * Gets data for key
-    * - Parameter key: key in user def dictionary
+    * - Parameter key: key in user default dictionary
     */
    private static func getData(key: String) -> Self {
       guard let data = (try? userDefaults?.get(objectType: Self.self, forKey: key)) else {
@@ -54,19 +59,19 @@ extension UserDefKind {
       }
       return data
    }
+   
    /**
     * Sets data for key
     * - Parameters:
-    *   - key: key in user def dictionary
+    *   - key: key in user default dictionary
     *   - data: Data to be stored
     */
    @discardableResult private static func setData(key: String, data: Self) -> Self {
       do {
-         // - Fixme: ⚠️️ print error if userdef is optional?
          try userDefaults?.set(object: data, forKey: key)
          // UserDefaults.standard.synchronize() // - Fixme: ⚠️️ might be needed or? Do some research, maybe enable via param flag
       } catch {
-         Swift.print("⚠️️ Err setting data for key: \(key) error:  \(error)")
+         Swift.print("⚠️️ Error setting data for key: \(key) error:  \(error)")
       }
       return data // We return data for convenience
    }

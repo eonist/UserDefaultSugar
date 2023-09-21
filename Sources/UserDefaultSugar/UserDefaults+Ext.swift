@@ -1,14 +1,18 @@
 import Foundation
 
+/**
+ * Extension for UserDefaults
+ */
 extension UserDefaults {
    /**
-    * Reads all (key, val) pairs in `UserDefaults.standard` 
+    * Reads all (key, val) pairs in `UserDefaults.standard`
     */
    public static func debug() {
       UserDefaults.standard.dictionaryRepresentation().forEach { key, value in
          print("Key: \(key) value: \(value)")
       }
    }
+   
    /**
     * Removes all keys and values from user defaults
     * - Remark: Seems to not remove the apple data. like keyboar etc. Only what the user set
@@ -21,9 +25,9 @@ extension UserDefaults {
       }
    }
 }
+
 /**
- * UserDefaults extensions
- * - Fixme: ⚠️️ Add example
+ * Extension for UserDefaults
  */
 extension UserDefaults {
    /**
@@ -34,9 +38,10 @@ extension UserDefaults {
     * - Throws: UserDefaults Error
     */
    public func set<T: Codable>(object: T, forKey: String) throws {
-      let jsonData = try JSONEncoder().encode(object)
-      set(jsonData, forKey: forKey)
+      let jsonData = try JSONEncoder().encode(object) // Encodes the object to JSON data
+      set(jsonData, forKey: forKey) // Sets the JSON data for the given key
    }
+   
    /**
     * Get Codable object from UserDefaults
     * - Parameters:
@@ -45,20 +50,22 @@ extension UserDefaults {
     * - Throws: UserDefaults Error
     */
    public func get<T: Codable>(objectType: T.Type, forKey: String) throws -> T? {
-      guard let result = value(forKey: forKey) as? Data else { return nil }
-      return try JSONDecoder().decode(objectType, from: result)
+      guard let result = value(forKey: forKey) as? Data else { return nil } // Gets the data for the given key
+      return try JSONDecoder().decode(objectType, from: result) // Decodes the data to the given object type
    }
 }
+
 /**
- * Asserter
+ * Extension for UserDefaults
  */
 extension UserDefaults {
    /**
     * UserDef extension
-    * ## Examples:
-    * UserDefaults.standard.exists(keyName: hasBeenLaunchedBeforeFlag)
+    * - Returns: true if the key exists, false otherwise
+    * - Parameters:
+    *   - keyName: The name of the key to check
     */
    public func exists(keyName: String) -> Bool {
-      self.object(forKey: keyName) != nil // Key exists
+      self.object(forKey: keyName) != nil // Returns true if the key exists, false otherwise
    }
 }
