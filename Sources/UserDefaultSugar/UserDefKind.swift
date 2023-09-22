@@ -19,7 +19,6 @@ public protocol UserDefKind: Codable {
     */
    static var userDefaults: UserDefaults? { get }
 }
-
 /**
  * Extension for UserDefKind protocol
  */
@@ -30,7 +29,6 @@ extension UserDefKind {
    public static var userDefaults: UserDefaults? {
       .standard
    }
-   
    /**
     * Returns the model for the user default key
     * - Remark: Serializes and deserializes (JSON <-> Struct)
@@ -44,7 +42,6 @@ extension UserDefKind {
       }
    }
 }
-
 /**
  * Private helpers for UserDefKind protocol
  */
@@ -59,7 +56,6 @@ extension UserDefKind {
       }
       return data
    }
-   
    /**
     * Sets data for key
     * - Parameters:

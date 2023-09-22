@@ -1,5 +1,4 @@
 import Foundation
-
 /**
  * Extension for UserDefaults
  */
@@ -12,7 +11,6 @@ extension UserDefaults {
          print("Key: \(key) value: \(value)")
       }
    }
-   
    /**
     * Removes all keys and values from user defaults
     * - Remark: Seems to not remove the apple data. like keyboar etc. Only what the user set
@@ -25,7 +23,6 @@ extension UserDefaults {
       }
    }
 }
-
 /**
  * Extension for UserDefaults
  */
@@ -41,7 +38,6 @@ extension UserDefaults {
       let jsonData = try JSONEncoder().encode(object) // Encodes the object to JSON data
       set(jsonData, forKey: forKey) // Sets the JSON data for the given key
    }
-   
    /**
     * Get Codable object from UserDefaults
     * - Parameters:
@@ -54,7 +50,6 @@ extension UserDefaults {
       return try JSONDecoder().decode(objectType, from: result) // Decodes the data to the given object type
    }
 }
-
 /**
  * Extension for UserDefaults
  */
