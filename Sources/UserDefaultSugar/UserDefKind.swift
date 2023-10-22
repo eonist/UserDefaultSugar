@@ -51,7 +51,7 @@ extension UserDefKind {
     * - Parameter key: key in user default dictionary
     */
    private static func getData(key: String) -> Self {
-      guard let data = (try? userDefaults?.get(objectType: Self.self, forKey: key)) else {
+      guard let data: Self = (try? userDefaults?.get(objectType: Self.self, forKey: key)) else {
          return setData(key: key, data: Self.defaultModel)
       }
       return data

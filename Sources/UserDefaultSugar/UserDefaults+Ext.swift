@@ -7,7 +7,7 @@ extension UserDefaults {
     * Reads all (key, val) pairs in `UserDefaults.standard`
     */
    public static func debug() {
-      UserDefaults.standard.dictionaryRepresentation().forEach { key, value in
+      UserDefaults.standard.dictionaryRepresentation().forEach { (key: String, value: Any) in
          print("Key: \(key) value: \(value)")
       }
    }
@@ -18,7 +18,7 @@ extension UserDefaults {
     * - Remark: Can also do: `UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!) -> https://stackoverflow.com/a/34331533/5389500
     */
    public static func removeAll() {
-      UserDefaults.standard.dictionaryRepresentation().forEach { key, _ in
+      UserDefaults.standard.dictionaryRepresentation().forEach { (key: String, _: Any) in
          UserDefaults.standard.removeObject(forKey: key)
       }
    }
