@@ -49,6 +49,26 @@ if let myObject = try? UserDefaults.standard.get(objectType: MyObject.self, forK
 }
 ```
 
+### Examples:
+```swift
+struct Prefs: UserDefKind {
+   var allowTelemetry: Bool
+   var userName: String
+}
+extension Prefs {
+   static var defaultModel: Self {
+      .init{
+         allowTelemetry: true,
+         userName: "John Doe"
+      }
+   }
+   static var key: String { "app-name-prefs" }
+}
+let prefs = Prefs()
+prefs.userName = "James" // writes to userdefault
+prefs.allowTelemetry = false // writes to userdefault
+```
+
 ### Blog post about using userDefaults
 [http://eon.codes/blog/2018/09/18/userdefaults/](http://eon.codes/blog/2018/09/18/userdefaults/)
 
@@ -56,7 +76,6 @@ if let myObject = try? UserDefaults.standard.get(objectType: MyObject.self, forK
 - [SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults) Another popular library for working with UserDefaults in Swift.
 - [Share UserDefault between app and extension See for more details:](https://stackoverflow.com/questions/45607903/sharing-userdefaults-between-extensions) A Stack Overflow post that explains how to share UserDefaults between an app and its extensions.  
 - [Blog post about using UserDefaults:](https://smashswift.com/how-to-share-user-defaults-with-extensions/)   A blog post that provides an overview of UserDefaults and how to use it in Swift.
-
 
 ### Todo:
 - Make examples using UserDefKind
