@@ -81,4 +81,4 @@ prefs.allowTelemetry = false // writes to userdefault
 - Make examples using UserDefKind
 - Make headless xcodeproj?
 - Add support for UserDefaults(suiteName: "group.your.bundle.here") etc
-- Add Unit-tests
+- Add Unit-tests 👈
