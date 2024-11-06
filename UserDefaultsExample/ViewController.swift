@@ -24,7 +24,7 @@ extension ViewController {
       defaults.set(CGFloat.pi, forKey: "Pi") // sets the value of pi for the key "Pi"
       defaults.set("Paul Hudson", forKey: "Name") // sets the value "Paul Hudson" for the key "Name"
       defaults.set(Date(), forKey: "LastRun") // sets the current date for the key "LastRun"
-      //arr and dict:
+      // arr and dict:
       let array = ["Hello", "World"] // creates a new array
       defaults.set(array, forKey: "SavedArray") // sets the array for the key "SavedArray"
       let dict = ["Name": "Paul", "Country": "UK"] // creates a new dictionary
@@ -36,8 +36,8 @@ extension ViewController {
     */
    func testReadingValues() {
       UserDefaults.standard.set("John", forKey: "FirstName") // sets the value "John" for the key "FirstName"
-      Swift.print(UserDefaults.standard.object(forKey: "FirstName") ?? "err")//John // prints the value for the key "FirstName" to the console
-      //where is the userdefaults stored?
+      Swift.print(UserDefaults.standard.object(forKey: "FirstName") ?? "err")// John // prints the value for the key "FirstName" to the console
+      // where is the userdefaults stored?
    }
    /**
     * - Fixme: ⚠️️
