@@ -1,9 +1,9 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.9
 import PackageDescription // Import the PackageDescription module
 
 let package = Package( // Define a new package
     name: "UserDefaultSugar", // Set the package name to "UserDefaultSugar"
-    platforms: [.iOS(.v15), .macOS(.v12)], // Set the supported platforms to iOS 15 and macOS 12
+    platforms: [.iOS(.v17), .macOS(.v14)], // Set the supported platforms to iOS 15 and macOS 12
     products: [ // Define the products of the package
         .library( // Define a new library product
             name: "UserDefaultSugar", // Set the library name to "UserDefaultSugar"
