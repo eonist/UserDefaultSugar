@@ -49,6 +49,7 @@ extension UserDefKind {
    /**
     * Gets data for key
     * - Parameter key: key in user default dictionary
+    * fixme: make this throw
     */
    private static func getData(key: String) -> Self {
       guard let data: Self = (try? userDefaults?.get(objectType: Self.self, forKey: key)) else {

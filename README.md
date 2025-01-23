@@ -51,22 +51,24 @@ if let myObject = try? UserDefaults.standard.get(objectType: MyObject.self, forK
 
 ### Examples:
 ```swift
+import UserDefaultSugar
+
 struct Prefs: UserDefKind {
-   var allowTelemetry: Bool
-   var userName: String
-}
-extension Prefs {
-   static var defaultModel: Self {
-      .init{
-         allowTelemetry: true,
-         userName: "John Doe"
+      var allowTelemetry: Bool
+      var userName: String
+
+      static var key: String { "app-name-prefs" }
+
+      static var defaultModel: Self {
+         return Prefs(allowTelemetry: true, userName: "John Doe")
       }
-   }
-   static var key: String { "app-name-prefs" }
 }
-let prefs = Prefs()
-prefs.userName = "James" // writes to userdefault
-prefs.allowTelemetry = false // writes to userdefault
+
+// Accessing the model
+var prefs = Prefs.model
+prefs.userName = "James" // Modify the property
+Prefs.model = prefs       // Save the updated model back to UserDefaults
+
 ```
 
 ### Blog post about using userDefaults
@@ -82,3 +84,63 @@ prefs.allowTelemetry = false // writes to userdefault
 - Make headless xcodeproj?
 - Add support for UserDefaults(suiteName: "group.your.bundle.here") etc
 - Add Unit-tests 👈
+- Implementing unit tests ensures your code works as expected and prevents future regressions. Here's an example test case:
+
+```swift
+// Tests/UserDefaultSugarTests/UserDefaultSugarTests.swift
+import XCTest
+@testable import UserDefaultSugar
+
+final class UserDefaultSugarTests: XCTestCase {
+      func testUserDefKind() {
+         struct TestPrefs: UserDefKind {
+            var value: String
+
+            static var key: String { "test-prefs" }
+
+            static var defaultModel: Self {
+                  return TestPrefs(value: "default")
+            }
+         }
+
+         var prefs = TestPrefs.model
+         prefs.value = "updated"
+         TestPrefs.model = prefs
+
+         let retrievedPrefs = TestPrefs.model
+         XCTAssertEqual(retrievedPrefs.value, "updated")
+      }
+}
+```
+- Allow users to specify custom `UserDefaults` instances, such as those for app groups or testing.
+
+   ```swift:Sources/UserDefaultSugar/UserDefKind.swift
+   public protocol UserDefKind: Codable {
+       static var key: String { get }
+       static var defaultModel: Self { get }
+       static var userDefaults: UserDefaults { get }
+   }
+
+   extension UserDefKind {
+       public static var userDefaults: UserDefaults {
+           return .standard
+       }
+   }
+   ```
+   Users can override `userDefaults` when conforming to `UserDefKind`.
+
+   ```swift
+   struct GroupPrefs: UserDefKind {
+       var sharedValue: String
+
+       static var key: String { "group-prefs" }
+
+       static var defaultModel: Self {
+           return GroupPrefs(sharedValue: "default")
+       }
+
+       static var userDefaults: UserDefaults {
+           return UserDefaults(suiteName: "group.com.your.app") ?? .standard
+       }
+   }
+   ```
